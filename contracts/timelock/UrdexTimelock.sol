@@ -118,7 +118,10 @@ contract UrdexTimelock {
         if (bytes(signature).length == 0) {
             callData = data;
         } else {
-            callData = abi.encodeWithSignature(signature, data);
+            callData = abi.encodePacked(
+                bytes4(keccak256(bytes(signature))),
+                data
+            );
         }
         // Execute the call
         // solium-disable-next-line security/no-call-value
