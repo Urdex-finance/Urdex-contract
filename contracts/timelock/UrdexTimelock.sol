@@ -23,7 +23,7 @@ contract UrdexTimelock {
     }
 
     constructor(address _admin, uint256 _delay) {
-        if (_delay < MINIMUM_DELAY || delay > MAXIMUM_DELAY) {
+        if (_delay < MINIMUM_DELAY || _delay > MAXIMUM_DELAY) {
             revert ValueNotInRange(_delay, MINIMUM_DELAY, MAXIMUM_DELAY);
         }
         admin = _admin;
@@ -31,7 +31,7 @@ contract UrdexTimelock {
     }
 
     function setDelay(uint256 _delay) public onlyTimelock {
-        if (_delay < MINIMUM_DELAY || delay > MAXIMUM_DELAY) {
+        if (_delay < MINIMUM_DELAY || _delay > MAXIMUM_DELAY) {
             revert ValueNotInRange(_delay, MINIMUM_DELAY, MAXIMUM_DELAY);
         }
         delay = _delay;
